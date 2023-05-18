@@ -1,10 +1,10 @@
 ###################################################################
 #
-#
-#
-#
-#
-#
+# authour : Isaac D
+#  : 
+# purpose : file handling by python
+# last modified : 18/5/23
+# version : V3
 #
 ########################################################################
                           read file
@@ -32,9 +32,64 @@ with open('filename.txt') as file:
                   makes the text in uppercase
 #########################################################################
 with open('filename.txt') as file:
-   for line in file:
-         print(line.strip().upper())
+    for line in file:
+        print(line.strip().upper())
  ## this change the text to uppercae by .upper()
  ## .strip is for remove unwanted space 
- ############### we can see the file after closing the file ###############
- 
+ #######################################################################
+                          write
+ #######################################################################
+ with open('filename','w') as file:
+      file.write('this line will replace the file')
+  ## mode (permission)
+  ## w = write or replace # if not exits python will create 
+  ## r = read
+  ## a = append
+  ## r+ = read and write
+###########################################################################
+                        os module
+###########################################################################
+import os
+import datetime
+#remove file
+os.remove('filename')
+#rename
+os.rename('fileold',filenew)
+# check file is there or not
+os.path.exists('filename') # true if exits false if not
+# check file size
+os.path.getsize('filename')
+# check last modified time
+os.path.getmtime('filename') #print long time stamp numbers
+# check last modify time clearly
+timestamp = os.path.getmtime('filename')
+datetime.datetime.fromtimestamp(timestamp) # clear time
+# find path of the file 
+os.path.abspath('filename') # shows like /home/isaac/filename
+# check the current dir
+print(os.getcwd()) # /home/isaac
+# make dir
+os.mkdir('foldername')
+# change dir
+os.chdir('foldername')
+# remove empty dir
+os.rmdir('foldername')
+# list file in a dir
+os.listdir('foldername')
+################################################################################################
+                                  csv module
+ ##############################################################################################
+ import csv
+# read CSV file which has name, phone, role
+with open('csv.txt', 'r') as file:
+    csv_file = csv.reader(file)
+    for row in csv_file:
+        name, phone, role = row
+        print('Name: {}, Phone: {}, Role: {}'.format(name, phone, role))
+
+# generate csv
+hosts = [['workstation.local','192.168.25.46'], ['webserver.cloud', '10.2.5.6']]
+with open('hosts.csv', 'w') as hosts_csv:
+       writer = csv.writer(hosts_csv)
+       writer.writerows(hosts)
+
