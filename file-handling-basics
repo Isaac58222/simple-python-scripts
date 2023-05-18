@@ -1,0 +1,40 @@
+###################################################################
+#
+#
+#
+#
+#
+#
+#
+########################################################################
+                          read file
+########################################################################
+file = open('filename.txt') # open file to read
+#readline
+print(file.readline())
+##prints the first time of the file
+#i#f we want to see next file use the print(file.readline()) again
+#read
+print(file.read))
+##print the whole file but if we use readline before print lines after the lines printed before
+file.close() # closing the file 
+##because when the file is open, the filesystem will lock it
+##so no other program or script can use it
+
+############################################################################
+                             with
+##############################################################################
+with open('filename.txt') as file:
+  print(file.readline())
+## print the result as same as the above but it itself close the file
+
+#########################################################################
+                  makes the text in uppercase
+#########################################################################
+with open('filename.txt') as file:
+   for line in file:
+         print(line.strip().upper())
+ ## this change the text to uppercae by .upper()
+ ## .strip is for remove unwanted space 
+ ############### we can see the file after closing the file ###############
+ 
